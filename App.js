@@ -1,22 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
+import env from './env';
 import reducers from './src/reducers';
-import LoginForm  from './src/components/LoginForm';
 import Router from './src/Router';
 
 export default class App extends React.Component {
   componentWillMount() {
     const config = {
-      apiKey: 'AIzaSyAAhIGc9RYo_Sy6md_tq12wk6I_xWBRzxo',
-      authDomain: 'authentication-ee7a6.firebaseapp.com',
-      databaseURL: 'https://authentication-ee7a6.firebaseio.com',
-      projectId: 'authentication-ee7a6',
-      storageBucket: 'authentication-ee7a6.appspot.com',
-      messagingSenderId: '206745767387'
+      apiKey: env.firebase.apiKey,
+      authDomain: env.firebase.authDomain,
+      databaseURL: env.firebase.databaseURL,
+      projectId: env.firebase.projectId,
+      storageBucket: env.firebase.storageBucket,
+      messagingSenderId: env.firebase.messagingSenderId
     };
     firebase.initializeApp(config);
   }
